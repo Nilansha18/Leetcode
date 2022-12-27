@@ -1,0 +1,22 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        vector<int>sum;
+        sum=nums1;
+        
+        for(int i=0;i<n;i++){
+            sum[i+m]=nums2[i];
+        }
+        
+        for(int i=0;i<m+n;i++){
+            int j=i;
+            while(j>0 && sum[j-1]>sum[j]) { 
+                swap(sum[j-1],sum[j]);
+                j--;
+
+            }
+        }
+        nums1=sum;
+        
+    }
+};
