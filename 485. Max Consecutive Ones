@@ -1,0 +1,17 @@
+int findMaxConsecutiveOnes(vector<int>& nums) {
+        int i,c=0,max=0;
+        for(i=0;i<nums.size();i++){
+            if(nums[i]==1){ 
+                c++;
+                if(max<c) { 
+                    max=c; 
+                    cout<<c;
+                }
+            }
+            else c=0;
+            
+        }
+        
+        return max;
+        
+    }
