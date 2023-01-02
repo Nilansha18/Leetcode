@@ -1,0 +1,6 @@
+int searchInsert(vector<int>& nums, int target) {
+        int  c=0;
+        while(c<nums.size() && nums[c]<target) {
+            c++;
+        }
+    return c;}
