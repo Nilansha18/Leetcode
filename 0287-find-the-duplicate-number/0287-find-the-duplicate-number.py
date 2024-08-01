@@ -3,8 +3,7 @@ class Solution:
         count=[0]*(len(nums))
         for i in range(len(nums)):
             count[nums[i]]=count[nums[i]]+1
-        for i in range(len(count)):
-            if(count[i]>1): return i
+            if(count[nums[i]] > 1) : return nums[i]
         return 0
             
         
