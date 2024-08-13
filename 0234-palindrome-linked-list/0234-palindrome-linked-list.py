@@ -5,32 +5,47 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        cnt=1
-        temp=head
-        list1=[]
-        list2=[]
-        while(temp.next is not None):
-            temp=temp.next
-            cnt+=1
-        for i in range(cnt//2):
-            list1.insert(0,head.val)
-            head=head.next
-        if(cnt%2!=0): 
-            list1.insert(0,head.val)
-            list2.append(head.val)
-            if list1[0]!=list2[0]: return False
-            head=head.next
+        if(head.next is None): return True
+        if(head.next.next is None): 
+            if(head.val==head.next.val): return True
+            else : return False
+        if(head.next.next.next is None):
+            if(head.val==head.next.next.val): return True
+            else : return False
+        slow=head
+        fast=head
+        temp=ListNode()
+        
+        while(fast.next is not None and fast.next.next is not None):
+            slow=slow.next
+            fast=fast.next.next
             
-            for i in range(cnt//2 ):
-                list2.append(head.val)
-                head=head.next  
-                if list1[i+1]!=list2[i+1]: return False
+        print(fast)
+        
+        #oddcase
+        if(fast.next is None):
+            temp.val=slow.val
+            temp.next=slow.next
+            slow.next=None
             
-        else : 
-            for i in range(cnt//2 ):
-                list2.append(head.val)
-                head=head.next  
-                if list1[i]!=list2[i]: return False
+        else:
+            temp=slow.next
+            slow.next=None
+            
+        
+        prev=None
+        while(head is not None ):
+            temp2=head.next
+            head.next=prev
+            prev=head
+            head=temp2
+        
+        while(temp is not None or prev is not None):
+            if(temp.val!=prev.val): return False
+            else: 
+                temp=temp.next
+                prev=prev.next
+        
         return True
         
         
