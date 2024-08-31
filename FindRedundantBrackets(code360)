@@ -1,0 +1,17 @@
+from sys import *
+from collections import *
+from math import *
+
+def findRedundantBrackets(s:str):
+	stack=[]
+	for i in range(len(s)):
+		if s[i]=='(' or s[i]=='+' or s[i]=='-' or s[i]=='*'  or s[i]=='/' :
+			stack.append(s[i])
+		else:
+			if s[i]==')':
+				if stack[-1]=='(' : return True
+				else:
+					while (stack[-1]!='('):
+						stack.pop()
+					stack.pop()
+	return False
