@@ -1,0 +1,29 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def SortedInsert(stack , num ):
+    #base case
+    if len(stack)==0 or stack[-1]<=num :
+        stack.append(num)
+        return
+    
+    #recursive call
+    top=stack.pop()
+    SortedInsert(stack,num)
+
+    #returning
+    stack.append(top)
+
+def sortStack(stack):
+    #base case
+    if len(stack)==0 :
+        return
+
+    #recursion
+    num=stack.pop()
+    sortStack(stack)
+
+    #returning
+    SortedInsert(stack ,num)
