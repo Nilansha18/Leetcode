@@ -1,0 +1,27 @@
+from typing import List
+
+def insertAtBottom(stack,num):
+    #base case
+    if len(stack)==0 :
+        stack.append(num)
+        return
+
+    #recursion
+    x=stack.pop()
+    insertAtBottom(stack,num)
+
+    #returning
+    stack.append(x)
+
+
+def reverseStack(stack: List[int]) -> None:
+    #base case
+    if len(stack)==0 :
+        return
+
+    #recursion
+    topn=stack.pop()
+    reverseStack(stack)
+
+    #returning
+    insertAtBottom(stack , topn)
