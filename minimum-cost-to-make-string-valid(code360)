@@ -1,0 +1,24 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def findMinimumCost(str):
+	cost=0
+	if len(str)%2 != 0 : return -1
+	s=[]
+	for i in range(len(str)):
+		if ( (str[i]=='{') or ( str[i]=='}' and len(s)==0 ) ):
+			s.append(str[i])
+		else:
+			if(s[-1]=='}'): 
+				cost+=1
+			s.pop()
+	if(len(s)==0): return cost
+
+	while(len(s)!=0):
+		val=s.pop()
+		if val == s[-1] : cost+=1
+		else : cost+=2
+		s.pop()
+	return cost
