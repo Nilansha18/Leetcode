@@ -1,0 +1,23 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def solve(inputStack , cnt, n):
+    #base case
+    if(cnt== n//2 ): 
+        inputStack.pop()
+        return
+    
+    #recursive call
+    topn=inputStack[-1]
+    inputStack.pop()
+    solve(inputStack, cnt+1 , n)
+
+    #returning 
+    inputStack.append(topn)
+
+def deleteMiddle(inputStack, N):
+
+    cnt=0
+    solve(inputStack , cnt , N)
