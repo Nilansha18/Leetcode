@@ -1,0 +1,25 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def solve(myStack , x):
+	#base case
+	if len(myStack)== 0  :
+		myStack.append(x)
+		return
+
+	#recursive call
+	topn=myStack.pop()
+	solve(myStack,x)
+
+	#returning
+	myStack.append(topn)
+
+
+
+
+def pushAtBottom(myStack: deque, x: int):
+	
+	solve(myStack , x)
+	return myStack
