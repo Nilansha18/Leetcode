@@ -1,0 +1,18 @@
+def nextSmallerElement(arr,n):
+    s=[]
+   
+    res=[-1]*n
+    i=0
+    while i<n :
+        if len(s)==0 or s[-1]<=arr[i]:
+            s.append(arr[i])
+            i+=1
+        else :
+            idx=arr.index(s[-1])
+            
+            res[idx]=arr[i]
+            arr[idx]=-1
+            s.pop()
+    
+            
+    return res
