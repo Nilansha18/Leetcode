@@ -16,6 +16,7 @@ class Solution:
                 while(pred.right is not None):
                     pred=pred.right
                 pred.right=curr.right
+                curr.right=None
                 curr.right=curr.left
                 curr.left=None
                 
