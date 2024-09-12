@@ -1,0 +1,22 @@
+from collections import defaultdict
+class Solution:
+    
+    #Function to return a list of nodes visible from the top view 
+    #from left to right in Binary Tree.
+    def topView(self,root):
+        if root is None : return []
+        ans=[]
+        q=deque([(root,0)])
+        mymap=defaultdict(int)
+        while q:
+            curr,level = q.popleft()
+            if level not in mymap :
+                mymap[level]=curr.data
+            if curr.left :
+                q.append((curr.left,level-1))
+            if curr.right :
+                q.append((curr.right,level+1))
+        
+        for key in sorted(mymap):
+            ans.append(mymap[key])
+        return ans
