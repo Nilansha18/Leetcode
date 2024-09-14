@@ -1,0 +1,13 @@
+def Paths(self, root : Optional['Node']) -> List[List[int]]:
+        ans=[] 
+        def getpath(root,temp):
+            if root is None : return
+    
+            if (root.left is  None and root.right is  None):
+                ans.append(temp+[root.data])
+                return
+            getpath(root.left,temp+[root.data])
+            getpath(root.right,temp+[root.data])
+        
+        getpath(root,[])
+        return ans
