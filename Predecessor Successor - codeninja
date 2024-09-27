@@ -1,0 +1,24 @@
+def predecessorSuccessor(root, key):
+    temp=root
+    succ,pred=-1,-1
+    if root is None: return [pred,succ]
+    while temp and temp.data!=key:
+        if temp.data>key:
+            succ=temp.data
+            temp=temp.left
+        else :
+            pred=temp.data
+            temp=temp.right
+    if temp is None : return [pred,succ]
+
+    left=temp.left 
+    while left :
+        pred=left.data
+        left=left.right
+   
+    right=temp.right 
+    while right :
+        succ=right.data
+        right=right.left
+    
+    return [pred,succ]
