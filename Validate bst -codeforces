@@ -1,0 +1,21 @@
+class BinaryTreeNode:
+    
+    def __init__(self, data):
+        
+        self.data = data
+        self.left = None
+        self.right = None
+        
+def isbst(root,minrange,maxrange):
+    if root is None : return True
+    
+    if root.data >=minrange and root.data<=maxrange :
+        left=isbst(root.left,minrange,root.data)
+        right=isbst(root.right,root.data,maxrange)
+        return left and right
+    else: return False
+        
+def validateBST(root):
+    mini=float(-inf)
+    maxi=float(inf)
+    return isbst(root,mini,maxi)
